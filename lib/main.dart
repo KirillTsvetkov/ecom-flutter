@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ecom/ui/orders/orders_list.dart';
-import 'package:ecom/ui/navigation/buttuns/user_profile_button.dart';
-import 'package:ecom/ui/navigation/buttuns/contacts_buttun.dart';
-import 'package:ecom/ui/navigation/buttuns/menu_buttun.dart';
+import 'package:ecom/ui/navigation/bars/bottom_bar.dart';
 
 
 void main() {
@@ -19,16 +17,7 @@ class MainApp extends StatelessWidget {
         appBar: AppBar(
           title: Text('Orders'),
         ),
-        bottomNavigationBar: BottomAppBar(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              MenuButton(),
-              UserProfileButton(),
-              ContactsButton(),
-            ],
-          ),
-        )
+        bottomNavigationBar: BottomBar()
     );
   }
 }
