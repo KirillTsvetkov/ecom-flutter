@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:ecom/ui/orders/order_details_dialog.dart';
 
-class OrderWidget extends StatelessWidget {
-  final String description;
-  final double amount;
+class FoodWidget extends StatelessWidget {
+  final String? description;
+  final String? name;
 
-  const OrderWidget({
+  const FoodWidget({
     Key? key,
+    required this.name,
     required this.description,
-    required this.amount,
   }) : super(key: key);
 
   @override
@@ -17,13 +17,13 @@ class OrderWidget extends StatelessWidget {
       elevation: 2,
       child: ListTile(
         title: Text(
-          description,
+          description!,
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),
         subtitle: Text(
-          '\$${amount.toStringAsFixed(2)}',
+          name!,
           style: TextStyle(
             color: Colors.grey[600],
           ),
@@ -33,9 +33,9 @@ class OrderWidget extends StatelessWidget {
             showDialog(
               context: context,
               builder: (BuildContext context) {
-                return OrderDetailsDialog(
-                  description: description,
-                  amount: amount,
+                return FoodDetailsDialog(
+                  description: description!,
+                  name: name!,
                 );
               },
             );

@@ -1,0 +1,201 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Your API title",
+        "description": "Your API description",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/category": {
+            "get": {
+                "tags": [
+                    "Category"
+                ],
+                "summary": "Get all category objects",
+                "operationId": "327644f4d836240fa297b2822ab6ca92",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/resources.category.show"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/foods": {
+            "get": {
+                "tags": [
+                    "Food"
+                ],
+                "summary": "Get all food objects",
+                "operationId": "24d5c56b69a66bcea47d1769fab20a9e",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/resources.food.show"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "resources.category.show": {
+                "title": "Category show resource",
+                "description": "Ресурс Category",
+                "properties": {
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "id": {
+                                    "$ref": "#/components/schemas/models.category.id"
+                                },
+                                "name": {
+                                    "$ref": "#/components/schemas/models.category.name"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "resources.food.show": {
+                "title": "Food show resource",
+                "description": "Ресурс Food",
+                "properties": {
+                    "id": {
+                        "$ref": "#/components/schemas/models.food.id"
+                    },
+                    "name": {
+                        "$ref": "#/components/schemas/models.food.name"
+                    },
+                    "description": {
+                        "$ref": "#/components/schemas/models.food.description"
+                    },
+                    "weight": {
+                        "$ref": "#/components/schemas/models.food.weight"
+                    },
+                    "price": {
+                        "$ref": "#/components/schemas/models.food.price"
+                    },
+                    "ingredients": {
+                        "$ref": "#/components/schemas/models.food.ingredients"
+                    },
+                    "protein": {
+                        "$ref": "#/components/schemas/models.food.protein"
+                    },
+                    "fat": {
+                        "$ref": "#/components/schemas/models.food.fat"
+                    },
+                    "carbohydrates": {
+                        "$ref": "#/components/schemas/models.food.carbohydrates"
+                    },
+                    "calories": {
+                        "$ref": "#/components/schemas/models.food.calories"
+                    },
+                    "category_id": {
+                        "$ref": "#/components/schemas/models.food.category_id"
+                    }
+                },
+                "type": "object"
+            },
+            "models.category.id": {
+                "title": "Category Id",
+                "description": "ID категории",
+                "type": "integer",
+                "example": "1"
+            },
+            "models.category.name": {
+                "title": "Category name",
+                "description": "Название категории",
+                "type": "string",
+                "example": "Салаты и закуски"
+            },
+            "models.food.id": {
+                "title": "Food Id",
+                "description": "ID блюда",
+                "type": "integer",
+                "example": "1"
+            },
+            "models.food.name": {
+                "title": "Food name",
+                "description": "Название блюда",
+                "type": "string",
+                "example": "Кимпаб с тунцом"
+            },
+            "models.food.description": {
+                "title": "Food description",
+                "description": "Описание блюда",
+                "type": "string",
+                "example": "Популярный корейский ролл с тунцом, овощами и омлетом"
+            },
+            "models.food.weight": {
+                "title": "Food weight",
+                "description": "Вес блюда",
+                "type": "integer",
+                "example": "270"
+            },
+            "models.food.price": {
+                "title": "Food price",
+                "description": "Цена блюда",
+                "type": "number",
+                "example": "359"
+            },
+            "models.food.ingredients": {
+                "title": "Food ingredients",
+                "description": "Состав блюда",
+                "type": "string",
+                "example": "Рис (заправленный кунжутным маслом и специями), нори, тунец консервированный, морковь-ча, огурец, омлет, листья салата, унаги, кунжут"
+            },
+            "models.food.protein": {
+                "title": "Food protein",
+                "description": "Белки",
+                "type": "number",
+                "example": "17.9"
+            },
+            "models.food.fat": {
+                "title": "Food fat",
+                "description": "Жиры",
+                "type": "number",
+                "example": "18.4"
+            },
+            "models.food.carbohydrates": {
+                "title": "Food carbohydrates",
+                "description": "Углеводы",
+                "type": "number",
+                "example": "67.2"
+            },
+            "models.food.calories": {
+                "title": "Food calories",
+                "description": "Ккал",
+                "type": "integer",
+                "example": "505"
+            },
+            "models.food.category_id": {
+                "title": "Food category_id",
+                "description": "ID категории",
+                "type": "integer",
+                "example": "1"
+            }
+        }
+    }
+}

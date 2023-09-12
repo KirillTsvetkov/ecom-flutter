@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-class OrderDetailsDialog extends StatelessWidget {
+class FoodDetailsDialog extends StatelessWidget {
   final String description;
-  final double amount;
+  final String name;
 
-  const OrderDetailsDialog({
+  const FoodDetailsDialog({
     Key? key,
     required this.description,
-    required this.amount,
+    required this.name,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
       title: Text(description),
-      content: Text('Amount: \$${amount.toStringAsFixed(2)}'),
+      content: Text('Name: ${name}'),
       actions: [
         TextButton(
           onPressed: () {

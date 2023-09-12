@@ -1,4 +1,5 @@
 
+import 'package:ecom/generated_code/api_docs.swagger.dart';
 import 'package:flutter/material.dart';
 import 'package:ecom/models/order.dart';
 import 'package:ecom/api/api_orders.dart';
@@ -7,23 +8,24 @@ import 'package:ecom/ui/orders/order_list_item.dart';
 class OrderListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Order>>(
-      future: fetchOrders(),
+    return FutureBuilder<List<ResourcesFoodShow>>(
+      future: getAllFoods(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else {
-            final orders = snapshot.data;
-
+            final foods = snapshot.data;
             return ListView.builder(
-              itemCount: orders?.length,
+              itemCount: foods!.length,
               itemBuilder: (context, index) {
-                final order = orders![index];
+                
 
-                return OrderWidget(
-                  description: order.description,
-                  amount: order.amount,
+                var food = foods[index];
+               
+                return FoodWidget(
+                  name: food.name,
+                  description: food.description,
                 );
               },
             );
