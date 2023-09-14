@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ecom/ui/orders/orders_list.dart';
+import 'package:ecom/ui/orders/food_list.dart';
 import 'package:ecom/ui/navigation/bars/bottom_bar.dart';
 
 
@@ -13,9 +13,9 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: OrderListWidget(),
+        body: FoodListWidget(),
         appBar: AppBar(
-          title: Text('Orders'),
+          title: Text('Food'),
         ),
         bottomNavigationBar: BottomBar()
     );

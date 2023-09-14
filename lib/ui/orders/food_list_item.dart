@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ecom/ui/orders/order_details_dialog.dart';
+import 'package:ecom/ui/orders/food_details_dialog.dart';
 
 class FoodWidget extends StatelessWidget {
   final String? description;

@@ -37,16 +37,21 @@
                 ],
                 "summary": "Get all food objects",
                 "operationId": "24d5c56b69a66bcea47d1769fab20a9e",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/pagination.page"
+                    },
+                    {
+                        "$ref": "#/components/parameters/pagination.per_page"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Success",
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/components/schemas/resources.food.show"
-                                    }
+                                    "$ref": "#/components/schemas/resources.food.show"
                                 }
                             }
                         }
@@ -82,38 +87,52 @@
                 "title": "Food show resource",
                 "description": "Ресурс Food",
                 "properties": {
-                    "id": {
-                        "$ref": "#/components/schemas/models.food.id"
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "id": {
+                                    "$ref": "#/components/schemas/models.food.id"
+                                },
+                                "name": {
+                                    "$ref": "#/components/schemas/models.food.name"
+                                },
+                                "description": {
+                                    "$ref": "#/components/schemas/models.food.description"
+                                },
+                                "weight": {
+                                    "$ref": "#/components/schemas/models.food.weight"
+                                },
+                                "price": {
+                                    "$ref": "#/components/schemas/models.food.price"
+                                },
+                                "ingredients": {
+                                    "$ref": "#/components/schemas/models.food.ingredients"
+                                },
+                                "protein": {
+                                    "$ref": "#/components/schemas/models.food.protein"
+                                },
+                                "fat": {
+                                    "$ref": "#/components/schemas/models.food.fat"
+                                },
+                                "carbohydrates": {
+                                    "$ref": "#/components/schemas/models.food.carbohydrates"
+                                },
+                                "calories": {
+                                    "$ref": "#/components/schemas/models.food.calories"
+                                },
+                                "category_id": {
+                                    "$ref": "#/components/schemas/models.food.category_id"
+                                }
+                            },
+                            "type": "object"
+                        }
                     },
-                    "name": {
-                        "$ref": "#/components/schemas/models.food.name"
+                    "links": {
+                        "$ref": "#/components/schemas/common.links"
                     },
-                    "description": {
-                        "$ref": "#/components/schemas/models.food.description"
-                    },
-                    "weight": {
-                        "$ref": "#/components/schemas/models.food.weight"
-                    },
-                    "price": {
-                        "$ref": "#/components/schemas/models.food.price"
-                    },
-                    "ingredients": {
-                        "$ref": "#/components/schemas/models.food.ingredients"
-                    },
-                    "protein": {
-                        "$ref": "#/components/schemas/models.food.protein"
-                    },
-                    "fat": {
-                        "$ref": "#/components/schemas/models.food.fat"
-                    },
-                    "carbohydrates": {
-                        "$ref": "#/components/schemas/models.food.carbohydrates"
-                    },
-                    "calories": {
-                        "$ref": "#/components/schemas/models.food.calories"
-                    },
-                    "category_id": {
-                        "$ref": "#/components/schemas/models.food.category_id"
+                    "meta": {
+                        "$ref": "#/components/schemas/common.meta"
                     }
                 },
                 "type": "object"
@@ -195,6 +214,121 @@
                 "description": "ID категории",
                 "type": "integer",
                 "example": "1"
+            },
+            "common.links": {
+                "title": "links",
+                "description": "Ссылки пагинации",
+                "properties": {
+                    "first": {
+                        "title": "Ссылка на первую страницу",
+                        "type": "string",
+                        "example": "/api/food?page=1"
+                    },
+                    "last": {
+                        "title": "Ссылка на последнюю страницу",
+                        "type": "string",
+                        "example": "/api/food?wpage=10734"
+                    },
+                    "prev": {
+                        "title": "Ссылка на предыдущую страницу",
+                        "type": "string",
+                        "example": "/api/food?page=1"
+                    },
+                    "next": {
+                        "title": "Ссылка на следующую страницу",
+                        "type": "string",
+                        "example": "/api/food?page=3"
+                    }
+                },
+                "type": "object"
+            },
+            "common.meta": {
+                "title": "meta",
+                "description": "Meta информация пагинации",
+                "properties": {
+                    "current_page": {
+                        "title": "Номер текущей страницы",
+                        "type": "integer",
+                        "example": 2
+                    },
+                    "from": {
+                        "title": "От (порядковый номер сущности)",
+                        "type": "integer",
+                        "example": 16
+                    },
+                    "last_page": {
+                        "title": "Номер последней страницы",
+                        "type": "integer",
+                        "example": 10734
+                    },
+                    "links": {
+                        "title": "Массив ссылок пагинатора",
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "url": {
+                                    "title": "url страницы",
+                                    "type": "string",
+                                    "example": "api/foods?page=1"
+                                },
+                                "label": {
+                                    "title": "title ссылки",
+                                    "type": "string",
+                                    "example": "pagination.previous"
+                                },
+                                "active": {
+                                    "title": "доступность ссылки",
+                                    "type": "boolean",
+                                    "example": false
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "path": {
+                        "title": "Основной путь запроса",
+                        "type": "string",
+                        "example": "/api/foods"
+                    },
+                    "per_page": {
+                        "title": "Кол-во выводимых сущностей",
+                        "type": "integer",
+                        "example": 15
+                    },
+                    "to": {
+                        "title": "До (порядковый номер сущности)",
+                        "type": "integer",
+                        "example": 30
+                    },
+                    "total": {
+                        "title": "Всего сущностей",
+                        "type": "integer",
+                        "example": 161002
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "parameters": {
+            "pagination.page": {
+                "name": "page",
+                "in": "query",
+                "description": "Номер страницы",
+                "required": false,
+                "schema": {
+                    "type": "integer"
+                },
+                "example": 1
+            },
+            "pagination.per_page": {
+                "name": "per_page",
+                "in": "query",
+                "description": "Кол-во элементов на странице",
+                "required": false,
+                "schema": {
+                    "type": "integer"
+                },
+                "example": 15
             }
         }
     }

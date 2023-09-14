@@ -29,13 +29,21 @@ class _$ApiDocs extends ApiDocs {
   }
 
   @override
-  Future<Response<List<ResourcesFoodShow>>> _apiFoodsGet() {
+  Future<Response<ResourcesFoodShow>> _apiFoodsGet({
+    int? page,
+    int? perPage,
+  }) {
     final Uri $url = Uri.parse('/api/foods');
+    final Map<String, dynamic> $params = <String, dynamic>{
+      'page': page,
+      'per_page': perPage,
+    };
     final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,
+      parameters: $params,
     );
-    return client.send<List<ResourcesFoodShow>, ResourcesFoodShow>($request);
+    return client.send<ResourcesFoodShow, ResourcesFoodShow>($request);
   }
 }
